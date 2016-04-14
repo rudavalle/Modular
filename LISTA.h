@@ -120,8 +120,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
  
-   LIS_tppLista LIS_CriarLista(
-             void   ( * ExcluirValor ) ( void * pDado ) ) ;
+   LIS_tpCondRet LIS_CriarLista(LIS_tppLista lista, void   ( * ExcluirValor ) ( void * pDado ) ) ;
  
  
 /***********************************************************************
@@ -140,7 +139,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
  
-   void LIS_DestruirLista( LIS_tppLista pLista ) ;
+   LIS_tpCondRet LIS_DestruirLista( LIS_tppLista pLista ) ;
  
  
 /***********************************************************************
@@ -155,7 +154,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
  
-   void LIS_EsvaziarLista( LIS_tppLista pLista ) ;
+   LIS_tpCondRet LIS_EsvaziarLista( LIS_tppLista pLista ) ;
  
  
 /***********************************************************************
