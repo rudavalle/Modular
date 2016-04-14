@@ -76,19 +76,19 @@ typedef struct tgPilha * tppPilha ;
 
    typedef enum {
 
-         PIL_CondRetOK ,
+         PIL_CondRetOK = 0,
                /* Concluiu corretamente */
 
-         PIL_CondRetPILHAVazia ,
+         PIL_CondRetPilhaVazia = 1,
                /* A PILHA não contém elementos */
 
-         PIL_CondRetFimPILHA ,
+         PIL_CondRetFimPILHA = 2,
                /* Foi atingido o fim de PILHA */
 
-         PIL_CondRetNaoAchou ,
+         PIL_CondRetNaoAchou = 3,
                /* Não encontrou o valor procurado */
 
-         PIL_CondRetFaltouMemoria
+         PIL_CondRetFaltouMemoria = 4
                /* Faltou memória ao tentar criar um elemento de PILHA */
 
    } PIL_tpCondRet ;
