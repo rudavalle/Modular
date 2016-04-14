@@ -93,23 +93,22 @@
 *  Funусo: LIS  &Criar lista
 *  ****/
  
-   LIS_tppLista LIS_CriarLista(
-             void   ( * ExcluirValor ) ( void * pDado ) )
+   LIS_tpCondRet LIS_CriarLista(LIS_tppLista * lista, void   ( * ExcluirValor ) ( void * pDado ) )
    {
  
-      LIS_tpLista * pLista = NULL ;
+      //LIS_tpLista * pLista = NULL ;
  
-      pLista = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
-      if ( pLista == NULL )
+      *lista = ( LIS_tpLista *) malloc( sizeof( LIS_tpLista )) ;
+      if ( lista == NULL )
       {
-         return NULL ;
+         return LIS_CondRetFaltouMemoria ;
       } /* if */
  
-      LimparCabeca( pLista ) ;
+      LimparCabeca( lista ) ;
  
-      pLista->ExcluirValor = ExcluirValor ;
+      (*lista)->ExcluirValor = ExcluirValor ;
  
-      return pLista ;
+      return LIS_CondRetOK ;
  
    } /* Fim funусo: LIS  &Criar lista */
  
@@ -118,16 +117,24 @@
 *  Funусo: LIS  &Destruir lista
 *  ****/
  
-   void LIS_DestruirLista( LIS_tppLista pLista )
+   LIS_tpCondRet LIS_DestruirLista( LIS_tppLista pLista )
    {
  
+	   LIS_tpCondRet CondRet;
+
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
  
-      LIS_EsvaziarLista( pLista ) ;
+     CondRet = LIS_EsvaziarLista( pLista ) ;
  
+	  if(CondRet  == LIS_CondRetListaVazia){
+		  return LIS_CondRetListaVazia;
+	  }
+
       free( pLista ) ;
+
+	  return LIS_CondRetOK;
  
    } /* Fim funусo: LIS  &Destruir lista */
  
@@ -136,12 +143,16 @@
 *  Funусo: LIS  &Esvaziar lista
 *  ****/
  
-   void LIS_EsvaziarLista( LIS_tppLista pLista )
+   LIS_tpCondRet LIS_EsvaziarLista( LIS_tppLista pLista )
    {
  
       tpElemLista * pElem ;
       tpElemLista * pProx ;
- 
+
+	  if(pLista == NULL){
+		return LIS_CondRetListaVazia;
+	  }
+
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
@@ -162,9 +173,8 @@
 *
 *  Funусo: LIS  &Inserir elemento antes
 *  ****/
- 
-   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista ,
-                                           void * pValor        )
+    
+   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista , void * pValor)
    {
  
       tpElemLista * pElem ;
@@ -546,13 +556,13 @@
 *
 ***********************************************************************/
  
-   void LimparCabeca( LIS_tppLista pLista )
+   void LimparCabeca( LIS_tppLista * pLista )
    {
  
-      pLista->pOrigemLista = NULL ;
-      pLista->pFimLista = NULL ;
-      pLista->pElemCorr = NULL ;
-      pLista->numElem   = 0 ;
+	  (*pLista)->pOrigemLista = NULL ;
+      (*pLista)->pFimLista = NULL ;
+      (*pLista)->pElemCorr = NULL ;
+      (*pLista)->numElem   = 0 ;
  
    } /* Fim funусo: LIS  -Limpar a cabeуa da lista */
  
