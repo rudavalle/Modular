@@ -14,20 +14,26 @@ void (*exclui) (void * dado);
 
 PIL_tpCondRet criaPilha(tppPilha * p)
 {
-	*p = NULL;
+
+	LIS_tpCondRet CondRet;
 
 	*p = (tppPilha)malloc(sizeof(tppPilha));
 	
-	if(*p == NULL)
-		return PIL_CondRetOK;
+	if(*p == NULL){
+		return PIL_CondRetFaltouMemoria;
+	}
 
-	(*p)->pLista = LIS_CriarLista(exclui);
+	CondRet = LIS_CriarLista(&((*p)->pLista), exclui);
+
+	if(CondRet == LIS_CondRetFaltouMemoria){
+		return PIL_CondRetFaltouMemoria;
+	}
 
 	return PIL_CondRetOK;
-
+	
 }
 
-PIL_tpCondRet pilhaPush(tpPilha * p, void * valor){
+PIL_tpCondRet pilhaPush(tppPilha p, void * valor){
 
 	LIS_tpCondRet CondRet;
 
@@ -37,35 +43,45 @@ PIL_tpCondRet pilhaPush(tpPilha * p, void * valor){
 	IrFinalLista(p->pLista);
 
 	CondRet = LIS_InserirElementoApos(p->pLista, valor);
+	
+	if(CondRet == LIS_CondRetFaltouMemoria){
+		return PIL_CondRetFaltouMemoria;
+	}
 
 	return PIL_CondRetOK;
 
 }
 
-PIL_tpCondRet DestruirPilha(tpPilha * p){
+PIL_tpCondRet DestruirPilha(tppPilha p){
 
 	LIS_tpCondRet CondRet;
+
+	if(p == NULL){
+		return PIL_CondRetPilhaVazia;
+	}
 
 	if(p->pLista == NULL){
 		free(p);
 		return PIL_CondRetOK;
 	}
 	
-	LIS_DestruirLista(p->pLista);
+	CondRet = LIS_DestruirLista(p->pLista);
+
+	if(CondRet == LIS_CondRetListaVazia){
+		
+		return PIL_CondRetPilhaVazia;
+	}
 
 	free(p);
 
 	return PIL_CondRetOK;
 
 }
+
 	
-	
-PIL_tpCondRet pilhaPop(tpPilha * p, void ** valor)
-{
+PIL_tpCondRet pilhaPop(tppPilha p, void ** valor){
 	
 	LIS_tpCondRet CondRet;
-
-	*valor = NULL;
 	
 	IrFinalLista(p->pLista);
 
@@ -73,26 +89,33 @@ PIL_tpCondRet pilhaPop(tpPilha * p, void ** valor)
 
 	CondRet = LIS_ExcluirElemento(p->pLista);
 
+	if(CondRet == LIS_CondRetListaVazia){
+		return PIL_CondRetPilhaVazia;
+	}
+
 	return PIL_CondRetOK;
 
 }
 
 int main(void)
 {
-
+	
+	char * teste = "teste1";
+	char * val = "teste2";
+	char * ola = "teste3";
 	PIL_tpCondRet condRet;
 	tpPilha * p;
-	int * val2 = (int*)malloc(sizeof(int));
-	int val;
+
+	
 	condRet = criaPilha(&p);
-	val = 30;
-	*val2 = 40;
 
-	pilhaPush(p, (void *) val);
+	condRet = pilhaPush(p, (void *) ola);
 
-	pilhaPop(p, (void **)&val2);
+	condRet = pilhaPop(p, (void **)&teste);
 
-	printf("%d", val2);
+	printf ("%s\n", teste);
+
+	printf("%s\n", teste);
 	
 	
 	return 0;
