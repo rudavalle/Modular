@@ -3,7 +3,10 @@
 #include <malloc.h>
 
 #include "LISTA.H"
+
+#define PILHA_OWN
 #include "PILHA.h"
+#undef PILHA_OWN
 
 typedef struct tgPilha
 {
@@ -94,31 +97,5 @@ PIL_tpCondRet pilhaPop(tppPilha p, void ** valor){
 	}
 
 	return PIL_CondRetOK;
-
-}
-
-int main(void)
-{
-	
-	char * teste = "teste1";
-	char * val = "teste2";
-	char * ola = "teste3";
-	PIL_tpCondRet condRet;
-	tpPilha * p;
-
-	
-	condRet = criaPilha(&p);
-
-	condRet = pilhaPush(p, (void *) ola);
-
-	condRet = pilhaPop(p, (void **)&teste);
-
-	printf ("%s\n", teste);
-
-	printf("%s\n", teste);
-	
-	
-	return 0;
-
 
 }
