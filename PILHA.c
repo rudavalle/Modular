@@ -13,7 +13,7 @@ typedef struct tgPilha
 	LIS_tppLista pLista;
 }tpPilha;
 
-void (*exclui) (void * dado);
+void (*exclui) (void * valor);
 
 PIL_tpCondRet criaPilha(tppPilha * p)
 {
@@ -40,8 +40,10 @@ PIL_tpCondRet pilhaPush(tppPilha p, void * valor){
 
 	LIS_tpCondRet CondRet;
 
-	if(p == NULL)
+	if(p == NULL){
 		
+		return PIL_CondRetPilhaVazia;
+	}
 
 	IrFinalLista(p->pLista);
 
@@ -99,3 +101,4 @@ PIL_tpCondRet pilhaPop(tppPilha p, void ** valor){
 	return PIL_CondRetOK;
 
 }
+

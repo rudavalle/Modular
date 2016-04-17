@@ -95,8 +95,15 @@ typedef struct tgMatriz * tppMatriz ;
                /* Faltou memória ao tentar criar um elemento de Matriz */
 
 		 MAT_CondRetMatrizNaoExiste = 5,
+			  // Faltou criar a matriz
 
-		 MAT_CondRetNoNaoExiste = 6
+		 MAT_CondRetNoNaoExiste = 6,
+			  // O no nao existe
+
+		 MAT_CondRetPilhaVazia = 7,
+               /* A PILHA não contém elementos */
+
+         MAT_CondRetFimPilha = 8
 
    } MAT_tpCondRet ;
 
@@ -127,61 +134,11 @@ typedef struct tgMatriz * tppMatriz ;
 *
 ***********************************************************************/
 
-   MAT_tpCondRet criaMatriz(tppMatriz * p) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: MAT  &Destruir Matriz
-*
-*  $ED Descrição da função
-*     Destrói a Matriz fornecida.
-*     O parâmetro ponteiro para a Matriz não é modificado.
-*     Se ocorrer algum erro durante a destruição, a Matriz resultará
-*     estruturalmente incorreta.
-*     OBS. não existe previsão para possíveis falhas de execução.
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK    - destruiu sem problemas
-*
-***********************************************************************/
+   MAT_tpCondRet criaMatriz(tppMatriz * p);
 
    MAT_tpCondRet empilhaValor(tppMatriz mat, void * valor, int col, int lin);
 
-
-/***********************************************************************
-*
-*  $FC Função: MAT  &Esvaziar Matriz
-*
-*  $ED Descrição da função
-*     Elimina todos os elementos, sem contudo eliminar a Matriz
-*
-*  $EP Parâmetros
-*     pMatriz - ponteiro para a Matriz a ser esvaziada
-*
-***********************************************************************/
-
-  MAT_tpCondRet inserirLinha(tppMatriz mat);
-
-
-/***********************************************************************
-*
-*  $FC Função: MAT  &Inserir elemento antes
-*
-*  $ED Descrição da função
-*     Insere novo elemento antes do elemento corrente.
-*     Caso a Matriz esteja vazia, insere o primeiro elemento da Matriz.
-*
-*  $EP Parâmetros
-*     pMatriz - ponteiro para a Matriz onde deve ser inserido o elemento
-*     pValor - ponteiro para o valor do novo elemento
-*              Pode ser NULL
-*
-*  $FV Valor retornado
-*     MAT_CondRetOK
-*     MAT_CondRetFaltouMemoria
-*
-***********************************************************************/
+   MAT_tpCondRet inserirLinha(tppMatriz mat);
 
    MAT_tpCondRet inserirColuna(tppMatriz mat);
 
@@ -190,9 +147,6 @@ typedef struct tgMatriz * tppMatriz ;
    MAT_tpCondRet moverSul(tppMatriz mat);
 
    MAT_tpCondRet moverLeste(tppMatriz mat);
-
-   MAT_tpCondRet moverCorrParaRaiz(tppMatriz mat);
-
 
 #undef Matriz_EXT
 

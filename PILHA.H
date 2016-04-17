@@ -82,7 +82,7 @@ typedef struct tgPilha * tppPilha ;
          PIL_CondRetPilhaVazia = 1,
                /* A PILHA não contém elementos */
 
-         PIL_CondRetFimPILHA = 2,
+         PIL_CondRetFimPilha = 2,
                /* Foi atingido o fim de PILHA */
 
          PIL_CondRetNaoAchou = 3,
