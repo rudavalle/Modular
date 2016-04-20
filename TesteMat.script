@@ -1,1 +1,13 @@
+// Script:    TesteMat.script
+// Autor:     
+// Data:      20/04/2016
+// Propósito: Testar sucintamente o módulo de Matrizes
+//
+
+==Inicializar Valores
+=declararparm	mat0	int 0
+=declararparm	mat1	int 1
+=declararparm	mat2	int 2
+
+
 
