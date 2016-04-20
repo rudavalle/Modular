@@ -1,0 +1,48 @@
+// Script:    TesteLista.script
+// Autor:     
+// Data:      20/04/2016
+// Propósito: Testar sucintamente o módulo lista genérica duplamente encadeada
+//
+
+
+==Inicializar Parametros
+=declararparm	pilha0	int 0
+=declararparm	pilha1	int 1
+
+=declararparm   str0    string  "abcdefg"
+=declararparm   str1    string  "qwerty"
+=declararparm   str2    string  "xxx"
+=declararparm   str3    string  "xpto"
+
+=declararparm   OK             int  0
+=declararparm   PilhaVazia     int  1
+=declararparm	NaoExiste      int	2
+=declararparm   FaltouMemoria  int  3
+
+
+==Push em Pilha Inexistente
+//observar este condret
+=push	pilha0	str0	NaoExiste
+	
+==Criar Pilha
+=criapilha	pilha0	OK
+
+==Push em Pilha OK
+=push	pilha0	str0	OK
+=push	pilha0	str1	OK
+
+==Pop em Pilha OK
+=pop	pilha0	str1	OK
+=pop	pilha0	str0	OK
+
+==Pop em Pilha Vazia
+=pop	pilha0	str3	PilhaVazia
+
+==Destruir Pilha Vazia
+=criapilha	pilha1	OK
+=destruirpilha	pilha1	PilhaVazia
+
+==Destruir Pilha OK
+=push	pilha1	str3	OK
+=push	pilha1	str2	OK
+=destruirpilha	pilha1	OK
