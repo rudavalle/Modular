@@ -1,0 +1,44 @@
+
+
+LES - Laboratório de Engenharia de Software DI/PUC-Rio
+      Arcabouço de teste de módulos C  (c) 2006
+
+---------------------------------------------
+      Construto sob teste: Trab_01
+
+      Arquivo de teste:    TestePil.script
+
+
+!!!    0  Linha:     1  // Script:    TesteLista.script 
+!!!    0  Linha:     2  // Autor: 
+!!!    0  Linha:     3  // Data:      24/04/2016 
+!!!    0  Linha:     4  // Proposito: Testar o modulo de pilha 
+    7  ==Inicializar Parametros
+   22  ==Push em Pilha Inexistente
+!!!    0  Linha:    23  //observar este condret 
+>>>    1  Linha:    24  Condicao de retorno errada ao inserir antes. Deveria ser: 2  É: 1
+   26  ==Criar Pilha
+   29  ==Push em Pilha OK
+>>>    2  Linha:    30  Condicao de retorno errada ao inserir antes. Deveria ser: 0  É: 1
+>>>    3  Linha:    31  Não é comando recuperar:  =push	pilha0	str1	OK
+   33  ==Pop em Pilha OK
+ll>    4  Linha:    34  Tipo do parâmetro incorreto.  str1
+>>>    5  Linha:    34  Erro nos parâmetros do comando:  =pop	pilha0	str1	OK
+   37  ==Pop em Pilha Vazia
+ll>    6  Linha:    38  Tipo do parâmetro incorreto.  str3
+>>>    7  Linha:    38  Erro nos parâmetros do comando:  =pop	pilha0	str3	PilhaVazia
+   40  ==Destruir Pilha Vazia
+   44  ==Destruir Pilha OK
+>>>    8  Linha:    45  Condicao de retorno errada ao inserir antes. Deveria ser: 0  É: 1
+>>>    9  Linha:    46  Não é comando recuperar:  =push	pilha1	str2	OK
+>>>   10  Linha:    47  Comando de teste ignorado:  =destruirpilha	pilha1	OK
+
+!!! Número de linhas lidas:          47
+!!! Número de casos de teste:         8
+!!! Número comandos corretos:        13
+!!! Número de falhas encontradas:    10
+
+!!! Foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0
