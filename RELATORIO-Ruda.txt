@@ -7,3 +7,7 @@ Data		  Horas Trabalhadas		  Tipo Tarefa 		 Descrição da Tarefa Realizada
 
 20/04/2016		2 Horas			Redigir e Revisar	Escrita dos scripts de Lista e de Pilha
 						scripts de Teste	e revisão dos mesmos
+
+22/04/2016		1 Hora			Revisão e Teste de 	Revisão dos scripts de teste
+			40 Min			Scripts	e correção	teste das funções pilha e lista
+						de funções
