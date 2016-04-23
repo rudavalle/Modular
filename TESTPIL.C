@@ -9,7 +9,7 @@
 *
 *  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
 *  Gestor:  LES/DI/PUC-Rio
-*  Autores: 
+*  Autores:
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
@@ -31,12 +31,12 @@
 #include    "Pilha.h"
 
 
-const char RESET_PILHA_CMD         [ ] = "=resetteste"     ;
-const char CRIAR_PILHA_CMD         [ ] = "=criapilha"     ;
-const char DESTRUIR_PILHA_CMD      [ ] = "=destruirpilha"  ;
-const char ESVAZIAR_PILHA_CMD      [ ] = "=esvaziarpilha"  ;
-const char PUSH_ELEM_CMD		   [ ] = "=push"  ;
-const char POP_ELEM_CMD	           [ ] = "=pop"   ;
+const char RESET_PILHA_CMD[] = "=resetteste";
+const char CRIAR_PILHA_CMD[] = "=criapilha";
+const char DESTRUIR_PILHA_CMD[] = "=destruirpilha";
+const char ESVAZIAR_PILHA_CMD[] = "=esvaziarpilha";
+const char PUSH_ELEM_CMD[] = "=push";
+const char POP_ELEM_CMD[] = "=pop";
 
 #define TRUE  1
 #define FALSE 0
@@ -46,11 +46,11 @@ const char POP_ELEM_CMD	           [ ] = "=pop"   ;
 
 tppPilha vtRefPilhas[DIM_VT_PILHA];
 
-tppPilha vtPilhas[ DIM_VT_PILHA ] ;
+tppPilha vtPilhas[DIM_VT_PILHA];
 
 /***** Protótipos das funções encapuladas no módulo *****/
 
-   static int ValidarInxPilha( int inxPilha ) ;
+static int ValidarInxPilha(int inxPilha);
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -74,157 +74,152 @@ tppPilha vtPilhas[ DIM_VT_PILHA ] ;
 *
 ***********************************************************************/
 
-   TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
-   {
+TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
+{
 
-	   TST_tpCondRet CondRet;
+	TST_tpCondRet CondRet;
 
-	   int inxPilha  = -1 ,
-          numLidos   = -1 ,
-          CondRetEsp = -1  ;      
+	int inxPilha = -1,
+		numLidos = -1,
+		CondRetEsp = -1;
 
-		char   StringDado[  DIM_VALOR ] ;
-		char * pDado ;
-		int i ;
+	char   StringDado[DIM_VALOR];
+	char * pDado;
+	int i;
 
-		int numElem = -1 ;
+	int numElem = -1;
 
-		StringDado[ 0 ] = 0 ;
+	StringDado[0] = 0;
 
-      /* Efetuar reset de teste de pilha */
+	/* Efetuar reset de teste de pilha */
 
-         if ( strcmp( ComandoTeste , RESET_PILHA_CMD ) == 0 )
-         {
+	if (strcmp(ComandoTeste, RESET_PILHA_CMD) == 0)
+	{
 
-            for( i = 0 ; i < DIM_VT_PILHA ; i++ )
-            {
-               vtPilhas[ i ] = NULL ;
-            } /* for */
+		for (i = 0; i < DIM_VT_PILHA; i++)
+		{
+			vtPilhas[i] = NULL;
+		} /* for */
 
-			for (i = 0; i < DIM_VT_PILHA; i++)
-			{
-				vtRefPilhas[i] = NULL;
-			} /* for */
+		for (i = 0; i < DIM_VT_PILHA; i++)
+		{
+			vtRefPilhas[i] = NULL;
+		} /* for */
 
-            return TST_CondRetOK ;
+		return TST_CondRetOK;
 
-         } /* fim ativa: Efetuar reset de teste de pilha */
+	} /* fim ativa: Efetuar reset de teste de pilha */
 
-      /* Testar CriarPilha */
+	/* Testar CriarPilha */
 
-		 else if (strcmp(ComandoTeste, CRIAR_PILHA_CMD) == 0)
-		 {
-			 numLidos = LER_LerParametros("ii",
-				 &inxPilha, &CondRetEsp);
+	else if (strcmp(ComandoTeste, CRIAR_PILHA_CMD) == 0)
+	{
+		numLidos = LER_LerParametros("ii",
+			&inxPilha, &CondRetEsp);
 
-			 if ((numLidos != 2)
-				 || (!ValidarInxPilha(inxPilha)))
-			 {
-				 return TST_CondRetParm;
-			 } /* if */
+		if ((numLidos != 2)
+			|| (!ValidarInxPilha(inxPilha)))
+		{
+			return TST_CondRetParm;
+		} /* if */
 
-			 CondRet = criaPilha(&( vtRefPilhas[inxPilha] ));
+		CondRet = criaPilha(&(vtRefPilhas[inxPilha]));
 
-			 return TST_CompararInt(CondRetEsp, CondRet,
-				 "Erro em ponteiro de nova pilha.");
+		return TST_CompararInt(CondRetEsp, CondRet,
+			"Erro em ponteiro de nova pilha.");
 
-		 } /* fim ativa: Testar CriarPilha */
-
-	  
-      /* Testar Destruir pilha */
-
-         else if ( strcmp( ComandoTeste , DESTRUIR_PILHA_CMD ) == 0 )
-         {
-
-            numLidos = LER_LerParametros( "ii" ,
-                               &inxPilha, &CondRetEsp ) ;
-
-            if ( ( numLidos != 2 )
-              || ( ! ValidarInxPilha( inxPilha )))
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-			CondRet = DestruirPilha(vtPilhas[inxPilha]);
-            
-			return TST_CompararInt(CondRetEsp, CondRet,
-				"Condicao de retorno errada ao tentar destruir a pilha.");
-
-         } /* fim ativa: Testar Destruir pilha */
-
-      /* Testar empilhar elemento */
-
-		 else if (strcmp(ComandoTeste, PUSH_ELEM_CMD) == 0)
-         {
-            numLidos = LER_LerParametros( "isi" ,
-                       &inxPilha , StringDado , &CondRetEsp ) ;
-
-            if ( ( numLidos != 3 )
-              || ( ! ValidarInxPilha( inxPilha )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
-
-            strcpy( pDado , StringDado ) ;
+	} /* fim ativa: Testar CriarPilha */
 
 
-			CondRet = pilhaPush(vtPilhas[inxPilha], pDado);
+	/* Testar Destruir pilha */
 
-            if ( CondRet != PIL_CondRetOK )
-            {
-               free( pDado ) ;
-            } /* if */
+	else if (strcmp(ComandoTeste, DESTRUIR_PILHA_CMD) == 0)
+	{
 
-            return TST_CompararInt( CondRetEsp , CondRet ,
-                     "Condicao de retorno errada ao empilhar."                   ) ;
+		numLidos = LER_LerParametros("ii",
+			&inxPilha, &CondRetEsp);
 
-         } /* fim ativa: Testar empilhar elemento */
+		if ((numLidos != 2)
+			|| (!ValidarInxPilha(inxPilha)))
+		{
+			return TST_CondRetParm;
+		} /* if */
 
-      /* Testar desempilhar elemento */
+		CondRet = DestruirPilha(vtPilhas[inxPilha]);
 
-         else if ( strcmp( ComandoTeste , POP_ELEM_CMD ) == 0 )
-         {
+		return TST_CompararInt(CondRetEsp, CondRet,
+			"Condicao de retorno errada ao tentar destruir a pilha.");
 
-            numLidos = LER_LerParametros( "iii" ,
-                       &inxPilha , &StringDado , &CondRetEsp ) ;
+	} /* fim ativa: Testar Destruir pilha */
 
-            if ( ( numLidos != 3 )
-              || ( ! ValidarInxPilha( inxPilha )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
+	/* Testar empilhar elemento */
 
-            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
+	else if (strcmp(ComandoTeste, PUSH_ELEM_CMD) == 0)
+	{
+		numLidos = LER_LerParametros("isi",
+			&inxPilha, StringDado, &CondRetEsp);
 
-            strcpy( pDado , StringDado ) ;
+		if ((numLidos != 3)
+			|| (!ValidarInxPilha(inxPilha)))
+		{
+			return TST_CondRetParm;
+		} /* if */
+
+		pDado = (char *)malloc(strlen(StringDado) + 1);
+		if (pDado == NULL)
+		{
+			return TST_CondRetMemoria;
+		} /* if */
+
+		strcpy(pDado, StringDado);
 
 
-			CondRet = pilhaPop(vtPilhas[inxPilha], &pDado);
+		CondRet = pilhaPush(vtRefPilhas[inxPilha], pDado);
 
-            if ( CondRet != PIL_CondRetOK )
-            {
-               free( pDado ) ;
-            } /* if */
+		if (CondRet != PIL_CondRetOK)
+		{
+			free(pDado);
+		} /* if */
 
-            return TST_CompararInt( CondRetEsp , CondRet ,
-                     "Condicao de retorno errada ao desempilhar."                   ) ;
+		return TST_CompararInt(CondRetEsp, CondRet,
+			"Condicao de retorno errada ao empilhar.");
 
-         } /* fim ativa: Testar desempilhar elemento */
+	} /* fim ativa: Testar empilhar elemento */
 
-       
-      return TST_CondRetNaoConhec ;
+	/* Testar desempilhar elemento */
 
-   } /* Fim função: TPIL &Testar pilha */
+	else if (strcmp(ComandoTeste, POP_ELEM_CMD) == 0)
+	{
+
+		numLidos = LER_LerParametros("iii",
+			&inxPilha, &StringDado, &CondRetEsp);
+
+		if ((numLidos != 3)
+			|| (!ValidarInxPilha(inxPilha)))
+		{
+			return TST_CondRetParm;
+		} /* if */
+
+		pDado = (char *)malloc(strlen(StringDado) + 1);
+		
+		strcpy(pDado, StringDado);
+
+		CondRet = pilhaPop(vtPilhas[inxPilha], &pDado);
+
+		if (CondRet != PIL_CondRetOK)
+		{
+			free(pDado);
+		} /* if */
+
+		return TST_CompararInt(CondRetEsp, CondRet,
+			"Condicao de retorno errada ao desempilhar.");
+
+	} /* fim ativa: Testar desempilhar elemento */
+
+
+	return TST_CondRetNaoConhec;
+
+} /* Fim função: TPIL &Testar pilha */
 
 
 /*****  Código das funções encapsuladas no módulo  *****/
@@ -235,17 +230,17 @@ tppPilha vtPilhas[ DIM_VT_PILHA ] ;
 *
 ***********************************************************************/
 
-   int ValidarInxPilha( int inxPilhas )
-   {
+int ValidarInxPilha(int inxPilhas)
+{
 
-	   if ((inxPilhas <   0)
-		   || (inxPilhas >= DIM_VT_PILHA))
-	   {
-		   return FALSE;
-	   } /* if */
+	if ((inxPilhas <   0)
+		|| (inxPilhas >= DIM_VT_PILHA))
+	{
+		return FALSE;
+	} /* if */
 
-	   return TRUE;
+	return TRUE;
 
-   } /* Fim função: TPIL -Validar indice de pilha */
+} /* Fim função: TPIL -Validar indice de pilha */
 
 /********** Fim do módulo de implementação: TPIL Teste pilha de símbolos **********/
