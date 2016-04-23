@@ -14,23 +14,21 @@ LES - Laboratório de Engenharia de Software DI/PUC-Rio
 !!!    0  Linha:     3  // Data:      24/04/2016 
 !!!    0  Linha:     4  // Proposito: Testar o modulo de pilha 
     7  ==Inicializar Parametros
-   25  ==Push em Pilha Vazia
-   28  ==Criar Pilha
-   31  ==Push em Pilha OK
-   35  ==Pop em Pilha OK
-ll>    1  Linha:    36  Tipo do parâmetro incorreto.  str0
->>>    2  Linha:    36  Erro nos parâmetros do comando:  =pop	inxPilha0	str0		OK
-   39  ==Pop em Pilha Vazia
-ll>    3  Linha:    40  Tipo do parâmetro incorreto.  str3
->>>    4  Linha:    40  Erro nos parâmetros do comando:  =pop	inxPilha0	str3		PilhaVazia
-   42  ==Destruir Pilha Vazia
-   46  ==Destruir Pilha OK
->>>    5  Linha:    50  Condicao de retorno errada ao tentar destruir a pilha. Deveria ser: 0  É: 1
+   27  ==Push em Pilha Vazia
+   30  ==Criar Pilha
+   33  ==Push em Pilha OK
+   37  ==Pop em Pilha OK
+>>>    1  Linha:    38  Condicao de retorno errada ao desempilhar. Deveria ser: 1  É: 0
+<<<    0  Linha:    39  Falha esperada foi recuperada. 
+   42  ==Pop em Pilha Vazia
+   45  ==Destruir Pilha Vazia
+   49  ==Destruir Pilha OK
+>>>    1  Linha:    53  Condicao de retorno errada ao tentar destruir a pilha. Deveria ser: 0  É: 1
 
-!!! Número de linhas lidas:          50
+!!! Número de linhas lidas:          72
 !!! Número de casos de teste:         8
-!!! Número comandos corretos:        21
-!!! Número de falhas encontradas:     5
+!!! Número comandos corretos:        25
+!!! Número de falhas encontradas:     1
 
 !!! Foram encontrados problemas
 
