@@ -176,7 +176,7 @@ typedef struct tgPilha * tppPilha ;
 *
 ***********************************************************************/
 
-   PIL_tpCondRet pilhaPop(tppPilha p, void ** valor) ;
+   PIL_tpCondRet pilhaPop(tppPilha p) ;
 
 
 #undef PILHA_EXT
