@@ -1,8 +1,7 @@
 // Script:    TesteLista.script
 // Autor:     
-// Data:      20/04/2016
-// Propósito: Testar sucintamente o módulo lista genérica duplamente encadeada
-//
+// Data:      24/04/2016
+// Proposito: Testar sucintamente o modulo de lista generica duplamente encadeada
 
 == Inicializar valores
 =declararparm   lista0  int 0
@@ -23,66 +22,64 @@
 =declararparm   pNULL          int  0
 =declararparm   pNaoNULL       int  1
 
-==Criar Listas
-=criarlista lista0   OK
-=criarlista lista1   OK
-=criarlista lista2   OK
+== Criar Lista 0
+=criarlista lista0   
 
-==Esvaziar lista vazia
+== Esvaziar lista vazia
 =esvaziarlista lista0  ListaVazia
 
 == Verificar ObterValor relativo a lista vazia
 =obtervalorelem  lista0   "???"     pNULL
 
 == Inserir elemento em lista vazia
-=criarlista  	 lista1  		 OK
+=criarlista  	 lista1
 =inselemantes    lista1   str0   OK
 =obtervalorelem  lista1   str0   pNaoNULL
 
-== Inserir elemento após primeiro
+== Inserir elemento apos primeiro
 =inselemapos     lista1   str1   OK
 =obtervalorelem  lista1   str1   pNaoNULL
 
-==proucurar valor em lista vazia
-=criarlista lista2   OK
-=proucurarelem  lista2  str2  NaoAchou
+== Criar lista 2
+=criarlista lista2   
 
-==proucurar valor ok
-=inselemantes  lista2 str3  OK
-=obtervalorelem  lista 2  str3  OK
+== Procurar valor ok
+=inselemapos  		lista2 	str3  	OK
+=obtervalorelem		lista2	str3	pNaoNULL
 
-==Proucurar valor inexsitente
-=obtervalorelem  lista2  str0  NaoAchou
-
-==Destruir lista ok
+== Destruir lista ok
+=destruirlista  lista0  OK
 =destruirlista  lista1  OK
 =destruirlista  lista2  OK
 
-==destruir lista vazia
-=criarlista lista0  OK
+== Destruir lista vazia
+=criarlista lista0  
 =destruirlista  lista0  ListaVazia
 
-==Avançar Elemento Corrente Lista Vazia
-=criarlista  lista0  OK
-=avancelemcorr lista0  2  ListaVazia
+== Avancar Elemento Corrente Lista Vazia
+=criarlista  lista0  
+=avancarelem lista0  2  ListaVazia
 
-=Avançar Elemento Corrente Fim Lista
-=criarlista  	 lista0  		 OK
+== Destruir lista 0
+=destruirlista lista0	OK
+
+== Avancar Elemento Corrente Fim Lista
+=criarlista  	 lista0  		 
 =inselemantes    lista0   str0   OK
 =obtervalorelem  lista0   str0   pNaoNULL
-=avancelemcorr   lista0		1		FimLista
+=avancarelem   	 lista0		1	 FimLista
 
-==Avançar Elemento Corrente OK
+== Avancar Elemento Corrente OK
 =inselemapos     lista0   str1   OK
-=obtervalorelem  lista0   str1   pNaoNULL
 =inselemapos     lista0   str2   OK
-=obtervalorelem  lista0   str2   pNaoNULL
+=inselemapos     lista0   str3   OK
+=obtervalorelem	 lista0	  str3	 pNaoNULL
+=irinicio		 lista0
+=avancarelem	 lista0		1	 OK
 
-=avancelemcorr	 lista0		1		OK
-
-==Exlcuir Elemento Corrente OK
+== Excluir Elemento Corrente OK
 =excluirelem   lista0   OK
 
-==Excluir Elemento Lista Vazia
+== Excluir Elemento Lista Vazia
 =criarlista lista1 OK
 =excluirelem lista1  ListaVazia
