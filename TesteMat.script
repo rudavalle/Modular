@@ -1,13 +1,63 @@
 // Script:    TesteMat.script
 // Autor:     
 // Data:      20/04/2016
-// Propósito: Testar sucintamente o módulo de Matrizes
+// Propósito: Testar sucintamente o modulo de Matrizes
 //
 
 ==Inicializar Valores
-=declararparm	mat0	int 0
-=declararparm	mat1	int 1
-=declararparm	mat2	int 2
+=declararparm	mat0		int 0
+=declararparm	numLinhas	int	4
+=declararparm	numColunas	int	4
+
+
+
+=declararparm   OK             int  0
+=declararparm	MatVazia	   int	1
+=declararparm	MatNaoExiste   int	2
+=declararparm	NoNaoExiste	   int	3
+
+
+
+
+
+==Criar Matriz Nao Declarada
+=criarmat	mat1	MatVazia
+
+==Criar Matriz OK
+=criarmat	mat0	OK
+
+==Inserir linha em matriz nao declarada
+=inserirlinha	mat1	MatVazia
+
+==Inserir linha em matriz OK
+=inserirlinha	mat0	OK
+
+==Inserir coluna em matriz nao declarada
+=inserircoluna	mat1	MatVazia
+
+==Inserir coluna em matriz OK
+=inserircoluna	mat0	OK
+
+==Destruir Matriz Inexistente
+=destruirmat	mat1	MatNaoExiste
+
+==Destruir matriz OK
+=destruirmat	mat0	OK
+
+
+==Criar Tabuleiro Matriz Nao Declarada
+=criarmat	mat0 OK
+=criartab	mat1	numLinhas	numColunas	MatVazia
+
+==Criar Tabuleiro Matriz OK
+=criartab	mat0	numLinhas	numColunas	OK
+
+==Mover Sul Matriz Nao Declarada
+=moversul	mat1	MatNaoExiste
+
+
+
+
 
 
 
