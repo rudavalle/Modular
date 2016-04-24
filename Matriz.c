@@ -270,10 +270,10 @@ MAT_tpCondRet moverSul(tppMatriz mat) {
 	if (mat == NULL) {
 		return MAT_CondRetMatrizNaoExiste;
 	}
-
+	/*
 	if (mat->noRaiz == NULL) {
 		return MAT_CondRetMatrizVazia;
-	}
+	}*/
 
 	if (mat->noCorr->sul == NULL) {
 		return MAT_CondRetNoNaoExiste;
@@ -290,11 +290,11 @@ MAT_tpCondRet moverLeste(tppMatriz mat) {
 	if (mat == NULL) {
 		return MAT_CondRetMatrizNaoExiste;
 	}
-
+	/*
 	if (mat->noRaiz == NULL) {
 		return MAT_CondRetMatrizVazia;
-	}
-
+	}*/
+	
 	if (mat->noCorr->leste == NULL) {
 		return MAT_CondRetNoNaoExiste;
 	}
@@ -410,7 +410,7 @@ MAT_tpCondRet empilhaValor(tppMatriz mat, void * valor, int lin, int col) {
 
 }
 
-MAT_tpCondRet desempilhaValor(tppMatriz mat, void ** valor, int lin, int col) {
+MAT_tpCondRet desempilhaValor(tppMatriz mat, int lin, int col) {
 
 	MAT_tpCondRet CondRetm;
 
@@ -421,15 +421,19 @@ MAT_tpCondRet desempilhaValor(tppMatriz mat, void ** valor, int lin, int col) {
 		CondRetm = moverSul(mat);
 	}
 
+	if (CondRetm != MAT_CondRetOK) {
+		return CondRetm;
+	}
+
 	while (mat->noCorr->coluna != col) {
 		CondRetm = moverLeste(mat);
 	}
 
-	CondRetp = pilhaPop(mat->noCorr->pilha, valor);
+	if (CondRetm != MAT_CondRetOK) {
+		return CondRetm;
+	}
 
-	moverCorrParaRaiz(mat);
-
-}
+	CondRetp = pilhaPop(mat->noCorr->pilha);
 
 
 MAT_tpCondRet destroiMatriz(tppMatriz mat) {
