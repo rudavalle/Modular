@@ -5,48 +5,25 @@
 //
 
 ==Inicializar Valores
-=declararparm mat0	      int 0
-=declararparm	numLinhas	  int	4
+=declararparm	mat0		int 0
+=declararparm	numLinhas	int	4
 =declararparm	numColunas	int	4
 
 
 
-=declararparm   OK            int  0
-=declararparm	MatVazia	      int	1
-=declararparm	MatNaoExiste    int	2
-=declararparm	NoNaoExiste	    int	3
+=declararparm   OK             int  0
+=declararparm	MatVazia	   int	1
+=declararparm	MatNaoExiste   int	2
+=declararparm	NoNaoExiste	   int	3
 
-
-
-==Criar Matriz Inexistente
-=criarmat	mat1	MatNaoExiste
-
-==Criar Matriz OK
-=criarmat	mat0	OK
-
-==Inserir Linha em matriz inexistente
-=inserirlinha	mat1	MatNaoExiste
-
-==Inserir Linha em matriz OK
-=inserirlinha	mat0	OK
-
-==Inserir Coluna em matriz inexistente
-=inserircoluna	mat1	MatNaoExiste
-
-==Inserir Coluna em matriz OK
-=inserircoluna	mat0	OK
-
-==Destruir matriz inexistente
-=destruirmat	mat1	MatNaoExiste
-
-==Destruir matriz OK
-=destruirmat	mat0	OK
 
 ==Criar	tabuleiro com matriz inexistente
 =criartab	mat1	numLinhas	numColunas	MatNaoExiste
 
 ==Criar tabuleiro com matriz OK
 =criartab	mat0	numLinhas	numColunas	OK
+
+
 
 ==Empilhar Valor Matriz Inexistente
 =empilhavalor	mat1	0	0	0	MatNaoExiste
@@ -78,6 +55,6 @@
 =destruirmat	mat0	OK
 
 ==Desempilha valor matriz vazia
-=criarmat	mat0	OK
-=desempilhavalor	mat0	0	0	OK
+=criartab			mat0	numLinhas	numColunas	OK
+=desempilhavalor	mat0	0			0			MatVazia
 
