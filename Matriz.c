@@ -410,7 +410,7 @@ MAT_tpCondRet empilhaValor(tppMatriz mat, void * valor, int lin, int col) {
 
 }
 
-MAT_tpCondRet desempilhaValor(tppMatriz mat, int lin, int col) {
+MAT_tpCondRet desempilhaValor(tppMatriz mat, void ** valor, int lin, int col) {
 
 	MAT_tpCondRet CondRetm;
 
@@ -433,7 +433,22 @@ MAT_tpCondRet desempilhaValor(tppMatriz mat, int lin, int col) {
 		return CondRetm;
 	}
 
-	CondRetp = pilhaPop(mat->noCorr->pilha);
+	CondRetp = pilhaPop(mat->noCorr->pilha, valor);
+
+	if (CondRetp == PIL_CondRetPilhaVazia) {
+
+		return MAT_CondRetPilhaVazia;
+	}
+
+	if (CondRetp == PIL_CondRetFimPilha) {
+
+		return MAT_CondRetFimPilha;
+	}
+
+
+	moverCorrParaRaiz(mat);
+
+}
 
 
 MAT_tpCondRet destroiMatriz(tppMatriz mat) {
