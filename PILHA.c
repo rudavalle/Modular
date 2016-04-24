@@ -71,9 +71,12 @@ PIL_tpCondRet DestruirPilha(tppPilha p){
 		return PIL_CondRetOK;
 	}
 
-	CondRet = LIS_DestruirLista(p->pLista);
+	while(LIS_ObterValor(p->pLista) != NULL){
+		LIS_ExcluirElemento(p->pLista);
+	}
 
 	free(p);
+
 	return PIL_CondRetOK;
 
 }
