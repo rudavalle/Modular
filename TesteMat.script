@@ -5,16 +5,16 @@
 //
 
 ==Inicializar Valores
-=declararparm	mat0		int 0
-=declararparm	numLinhas	int	4
+=declararparm mat0	      int 0
+=declararparm	numLinhas	  int	4
 =declararparm	numColunas	int	4
 
 
 
-=declararparm   OK             int  0
-=declararparm	MatVazia	   int	1
-=declararparm	MatNaoExiste   int	2
-=declararparm	NoNaoExiste	   int	3
+=declararparm   OK            int  0
+=declararparm	MatVazia	      int	1
+=declararparm	MatNaoExiste    int	2
+=declararparm	NoNaoExiste	    int	3
 
 
 
