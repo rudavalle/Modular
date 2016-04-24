@@ -5,58 +5,48 @@
 //
 
 ==Inicializar Valores
-=declararparm	mat0		int 0
-=declararparm	numLinhas	int	4
+=declararparm	mat0		    int 0
+=declararparm	numLinhas	  int	4
 =declararparm	numColunas	int	4
 
 
 
-=declararparm   OK             int  0
-=declararparm	MatVazia	   int	1
+=declararparm   OK           int  0
+=declararparm	MatVazia	     int	1
 =declararparm	MatNaoExiste   int	2
 =declararparm	NoNaoExiste	   int	3
 
 
 
-
-
-==Criar Matriz Nao Declarada
-=criarmat	mat1	MatVazia
+==Criar Matriz Inexistente
+=criarmat	mat1	MatNaoExiste
 
 ==Criar Matriz OK
 =criarmat	mat0	OK
 
-==Inserir linha em matriz nao declarada
-=inserirlinha	mat1	MatVazia
+==Inserir Linha em matriz inexistente
+=inserirlinha	mat1	MatNaoExiste
 
-==Inserir linha em matriz OK
+==Inserir Linha em matriz OK
 =inserirlinha	mat0	OK
 
-==Inserir coluna em matriz nao declarada
-=inserircoluna	mat1	MatVazia
+==Inserir Coluna em matriz inexistente
+=inserircoluna	mat1	MatNaoExiste
 
-==Inserir coluna em matriz OK
+==Inserir Coluna em matriz OK
 =inserircoluna	mat0	OK
 
-==Destruir Matriz Inexistente
+==Destruir matriz inexistente
 =destruirmat	mat1	MatNaoExiste
 
 ==Destruir matriz OK
 =destruirmat	mat0	OK
 
+==Criar	tabuleiro com matriz inexistente
+=criartab	mat1	numLinhas	numColunas	MatNaoExiste
 
-==Criar Tabuleiro Matriz Nao Declarada
-=criarmat	mat0 OK
-=criartab	mat1	numLinhas	numColunas	MatVazia
-
-==Criar Tabuleiro Matriz OK
+==Criar tabuleiro com matriz OK
 =criartab	mat0	numLinhas	numColunas	OK
-
-==Mover Sul Matriz Nao Declarada
-=moversul	mat1	MatNaoExiste
-
-
-
 
 
 
