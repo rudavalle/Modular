@@ -304,46 +304,53 @@ MAT_tpCondRet moverLeste(tppMatriz mat) {
 	return MAT_CondRetOK;
 
 }
+/* * * * * * * * * * * * * * * * * * * * * * *
+	FUNÇÕES QUE SERAM USADAS PARA O TRABALHO 3
 
-MAT_tpCondRet moverOeste(tppMatriz mat) {
+*MAT_tpCondRet moverOeste(tppMatriz mat) {
+*
+*	if (mat == NULL) {
+*		return MAT_CondRetMatrizNaoExiste;
+*	}
+*
+*	if (mat->noRaiz == NULL) {
+*		return MAT_CondRetMatrizVazia;
+*	}
+*
+*	if (mat->noCorr->leste == NULL) {
+*		return MAT_CondRetNoNaoExiste;
+*	}
+*
+*	mat->noCorr = mat->noCorr->oeste;
+*
+*	return MAT_CondRetOK;
+*
+*}
+*
+* * * * * * * * * * * * * * * * * * * * * *  */
 
-	if (mat == NULL) {
-		return MAT_CondRetMatrizNaoExiste;
-	}
-
-	if (mat->noRaiz == NULL) {
-		return MAT_CondRetMatrizVazia;
-	}
-
-	if (mat->noCorr->leste == NULL) {
-		return MAT_CondRetNoNaoExiste;
-	}
-
-	mat->noCorr = mat->noCorr->oeste;
-
-	return MAT_CondRetOK;
-
-}
-
-MAT_tpCondRet moverNorte(tppMatriz mat) {
-	if (mat == NULL) {
-		return MAT_CondRetMatrizNaoExiste;
-	}
-
-	if (mat->noRaiz == NULL) {
-		return MAT_CondRetMatrizVazia;
-	}
-
-	if (mat->noCorr->leste == NULL) {
-		return MAT_CondRetNoNaoExiste;
-	}
-
-	mat->noCorr = mat->noCorr->norte;
-
-	return MAT_CondRetOK;
-
-}
-
+/* * * * * * * * * * * * * * * * * * * * * *
+*	FUNÇÕES QUE SERAM USADAS NO TRABALHO 3
+*
+*MAT_tpCondRet moverNorte(tppMatriz mat) {
+*	if (mat == NULL) {
+*		return MAT_CondRetMatrizNaoExiste;
+*	}
+*
+*	if (mat->noRaiz == NULL) {
+*		return MAT_CondRetMatrizVazia;
+*	}
+*
+*	if (mat->noCorr->leste == NULL) {
+*		return MAT_CondRetNoNaoExiste;
+*	}
+*
+*	mat->noCorr = mat->noCorr->norte;
+*
+*	return MAT_CondRetOK;
+*
+*}
+* * * * * * * * * * * * * * * * * * * * * * * */
 MAT_tpCondRet empilhaValor(tppMatriz mat, void * valor, int lin, int col) {
 
 	MAT_tpCondRet CondRetm;
