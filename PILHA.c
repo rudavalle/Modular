@@ -13,7 +13,7 @@ typedef struct tgPilha
 	LIS_tppLista pLista;
 }tpPilha;
 
-void exclui (void * valor);
+void (*exclui) (void * valor);
 
 PIL_tpCondRet criaPilha(tppPilha * p)
 {
