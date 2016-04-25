@@ -46,6 +46,9 @@
 =criapilha		inxPilha1		OK
 =destruirpilha	inxPilha1		OK
 
+== Destruir	Pilha Vazia
+=destruirpilha	inxPilha2	PilhaVazia
+
 == Destruir Pilha OK
 =criapilha		inxPilha3	OK
 =push			inxPilha3	str3		OK
