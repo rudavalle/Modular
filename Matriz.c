@@ -3,7 +3,6 @@
 
 #include "PILHA.H"
 #include "Matriz.h"
-#include "LISTA.h"
 
 typedef struct tgNo{
 
@@ -409,14 +408,28 @@ MAT_tpCondRet desempilharValor(tppMatriz mat, int lin, int col){
 
 		CondRetm = moverSul(mat);
 	}
+
+	if(CondRetm != MAT_CondRetOK){
+		return CondRetm;
+	}
 	
 	while(mat->noCorr->coluna != col){
 		CondRetm = moverLeste(mat);
+	}
+
+	if(CondRetm != MAT_CondRetOK){
+		return CondRetm;
+	}
+
+	if(mat->noCorr->pilha == NULL){
+		return MAT_CondRetPilhaVazia;
 	}
 	
 	CondRetp = pilhaPop(mat->noCorr->pilha);
 
 	moverCorrParaRaiz(mat);
+
+	return MAT_CondRetOK;
 
 }
 
