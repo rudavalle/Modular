@@ -71,9 +71,12 @@ PIL_tpCondRet DestruirPilha(tppPilha p){
 		return PIL_CondRetOK;
 	}
 
+
 	while(LIS_ObterValor(p->pLista) != NULL){
 		LIS_ExcluirElemento(p->pLista);
 	}
+
+	free(p->pLista);
 
 	free(p);
 
@@ -93,8 +96,7 @@ PIL_tpCondRet pilhaPop(tppPilha p){
 	if(CondRet == LIS_CondRetListaVazia){
 		return PIL_CondRetPilhaVazia;
 	}
-
+	
 	return PIL_CondRetOK;
 
 }
-
