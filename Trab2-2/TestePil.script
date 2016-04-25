@@ -1,0 +1,53 @@
+// Script:    TesteLista.script
+// Autor:     
+// Data:      24/04/2016
+// Proposito: Testar o modulo de pilha
+
+
+==Inicializar Parametros
+=declararparm	inxPilha0		int 0
+=declararparm	inxPilha1		int 1
+=declararparm	inxPilha2		int 2
+=declararparm	inxPilha3		int 3
+
+=declararparm	inxString0		int 0
+=declararparm	inxString1		int 1
+
+=declararparm   str0    string  "abcdefg"
+=declararparm   str1    string  "qwerty"
+=declararparm   str2    string  "xxx"
+=declararparm   str3    string  "xpto"
+
+=declararparm   OK             int  0
+=declararparm   PilhaVazia     int  1
+=declararparm	NaoExiste      int	2
+=declararparm   FaltouMemoria  int  3
+
+
+==Push em Pilha Vazia
+=push	inxPilha0	str0		PilhaVazia
+	
+==Criar Pilha
+=criapilha	inxPilha0			OK
+
+==Push em Pilha OK
+=push	inxPilha0	str0		OK
+=push	inxPilha0	str1		OK
+
+==Pop em Pilha OK
+=pop	inxPilha0	PilhaVazia
+=recuperar
+=pop	inxPilha0	OK
+
+==Pop em Pilha Vazia
+=pop	inxPilha0	PilhaVazia
+
+==Destruir Pilha Vazia
+=criapilha		inxPilha1		OK
+=destruirpilha	inxPilha1		PilhaVazia
+
+==Destruir Pilha OK
+=criapilha		inxPilha3	OK
+=push			inxPilha3	str3		OK
+=push			inxPilha3	str2		OK
+=destruirpilha	inxPilha3	OK

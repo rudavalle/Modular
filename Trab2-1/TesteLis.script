@@ -1,0 +1,85 @@
+// Script:    TesteLista.script
+// Autor:     
+// Data:      24/04/2016
+// Proposito: Testar sucintamente o modulo de lista generica duplamente encadeada
+
+== Inicializar valores
+=declararparm   lista0  int 0
+=declararparm   lista1  int 1
+=declararparm   lista2  int 2
+
+=declararparm   str0    string  "abcdefg"
+=declararparm   str1    string  "qwerty"
+=declararparm   str2    string  "xxx"
+=declararparm   str3    string  "xpto"
+
+=declararparm   OK             int  0
+=declararparm   ListaVazia     int  1
+=declararparm   FimLista       int  2
+=declararparm   NaoAchou       int  3
+=declararparm   FaltouMemoria  int  4
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+== Criar Lista 0
+=criarlista lista0   
+
+== Esvaziar lista vazia
+=esvaziarlista lista0  ListaVazia
+
+== Verificar ObterValor relativo a lista vazia
+=obtervalorelem  lista0   "???"     pNULL
+
+== Inserir elemento em lista vazia
+=criarlista  	 lista1
+=inselemantes    lista1   str0   OK
+=obtervalorelem  lista1   str0   pNaoNULL
+
+== Inserir elemento apos primeiro
+=inselemapos     lista1   str1   OK
+=obtervalorelem  lista1   str1   pNaoNULL
+
+== Criar lista 2
+=criarlista lista2   
+
+== Procurar valor ok
+=inselemapos  		lista2 	str3  	OK
+=obtervalorelem		lista2	str3	pNaoNULL
+
+== Destruir lista ok
+=destruirlista  lista0  OK
+=destruirlista  lista1  OK
+=destruirlista  lista2  OK
+
+== Destruir lista vazia
+=criarlista lista0  
+=destruirlista  lista0  ListaVazia
+
+== Avancar Elemento Corrente Lista Vazia
+=criarlista  lista0  
+=avancarelem lista0  2  ListaVazia
+
+== Destruir lista 0
+=destruirlista lista0	OK
+
+== Avancar Elemento Corrente Fim Lista
+=criarlista  	 lista0  		 
+=inselemantes    lista0   str0   OK
+=obtervalorelem  lista0   str0   pNaoNULL
+=avancarelem   	 lista0		1	 FimLista
+
+== Avancar Elemento Corrente OK
+=inselemapos     lista0   str1   OK
+=inselemapos     lista0   str2   OK
+=inselemapos     lista0   str3   OK
+=obtervalorelem	 lista0	  str3	 pNaoNULL
+=irinicio		 lista0
+=avancarelem	 lista0		1	 OK
+
+== Excluir Elemento Corrente OK
+=excluirelem   lista0   OK
+
+== Excluir Elemento Lista Vazia
+=criarlista lista1 OK
+=excluirelem lista1  ListaVazia

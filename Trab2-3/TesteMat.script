@@ -1,0 +1,60 @@
+// Script:    TesteMat.script
+// Autor:     
+// Data:      20/04/2016
+// Propósito: Testar sucintamente o modulo de Matrizes
+//
+
+==Inicializar Valores
+=declararparm	mat0		int 0
+=declararparm	numLinhas	int	4
+=declararparm	numColunas	int	4
+
+
+
+=declararparm   OK             int  0
+=declararparm	MatVazia	   int	1
+=declararparm	MatNaoExiste   int	2
+=declararparm	NoNaoExiste	   int	3
+
+
+==Criar	tabuleiro com matriz inexistente
+=criartab	mat1	numLinhas	numColunas	MatNaoExiste
+
+==Criar tabuleiro com matriz OK
+=criartab	mat0	numLinhas	numColunas	OK
+
+
+
+==Empilhar Valor Matriz Inexistente
+=empilhavalor	mat1	0	0	0	MatNaoExiste
+
+==Empilha Valor Matriz OK
+=empilhavalor	mat0	0	0	0	OK
+=empilhavalor	mat0	1	0	0	OK
+=empilhavalor	mat0	2	0	0	OK
+=empilhavalor	mat0	0	1	0	OK
+=empilhavalor	mat0	1	1	0	OK
+=empilhavalor	mat0	2	1	0	OK
+=empilhavalor	mat0	0	0	0	OK
+=empilhavalor	mat0	1	0	0	OK
+=empilhavalor	mat0	2	0	0	OK
+=empilhavalor	mat0	0	2	0	OK
+=empilhavalor	mat0	1	2	0	OK
+=empilhavalor	mat0	2	2	0	OK
+
+
+==Desempilha valor matriz nao existente
+=desempilhavalor	mat1	0	0
+
+==Desempilha valor matriz OK
+=desempilhavalor	mat0	0	0
+=desempilhavalor	mat0	2	0
+=desempilhavalor	mat0	1	0
+
+==Destruir matriz OK
+=destruirmat	mat0	OK
+
+==Desempilha valor matriz vazia
+=criartab			mat0	numLinhas	numColunas	OK
+=desempilhavalor	mat0	0			0			MatVazia
+
