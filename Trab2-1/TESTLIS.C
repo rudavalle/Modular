@@ -9,14 +9,13 @@
 *
 *  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
 *  Gestor:  LES/DI/PUC-Rio
-*  Autores: avs
+*  Autores: Barbara Castro, Hugo Machado, Ruda Valle
 *
 *  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*     4       avs   01/fev/2006 criar linguagem script simbólica
-*     3       avs   08/dez/2004 uniformização dos exemplos
-*     2       avs   07/jul/2003 unificação de todos os módulos em um só projeto
-*     1       avs   16/abr/2003 início desenvolvimento
+*     Versão  Autores    Data     Observações
+*     3       bhr   31/mar/2016 finalização do trabalho 1
+*     2       bhr   15/mar/2016 unificação de todos os módulos em um só projeto
+*     1       bhr   08/mar/2016 início desenvolvimento
 *
 ***************************************************************************/
 
@@ -43,7 +42,7 @@ static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
-
+static const char PROC_VALOR_CMD		  [ ] = "=procvalor"	  ;
 
 #define TRUE  1
 #define FALSE 0
@@ -86,6 +85,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 *     =irinicio                     inxLista
 *     =irfinal                      inxLista
 *     =avancarelem                  inxLista  numElem CondRetEsp
+*	  =procvalor					inxLista  string  CondRetEsp
 *
 ***********************************************************************/
 
@@ -128,23 +128,24 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
          else if ( strcmp( ComandoTeste , CRIAR_LISTA_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "ii" ,
-                       &inxLista , &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "i" ,
+                       &inxLista ) ;
 
-            if ( ( numLidos != 2 )
+            if ( ( numLidos != 1 )
               || ( ! ValidarInxLista( inxLista , VAZIO )))
             {
                return TST_CondRetParm ;
             } /* if */
 
-            CondRet = LIS_CriarLista( vtListas[ inxLista ], DestruirValor ) ;
+            vtListas[ inxLista ] =
+                 LIS_CriarLista( DestruirValor ) ;
 
-            return TST_CompararInt( 1 , vtListas[ inxLista ] ,
-               "Erro ao criar nova lista."  ) ;
+            return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
+               "Erro em ponteiro de nova lista."  ) ;
 
          } /* fim ativa: Testar CriarLista */
 
-      /* Testar Esvaziar lista lista */
+      /* Testar Esvaziar lista */
 
          else if ( strcmp( ComandoTeste , ESVAZIAR_LISTA_CMD ) == 0 )
          {
@@ -162,7 +163,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
             return TST_CondRetOK ;
 
-         } /* fim ativa: Testar Esvaziar lista lista */
+         } /* fim ativa: Testar Esvaziar lista */
 
       /* Testar Destruir lista */
 
@@ -308,6 +309,28 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
          } /* fim ativa: Testar obter valor do elemento corrente */
 
+		 	 		 
+		/* Testar procurar valor do elemento corrente */ 
+		 
+		 else if ( strcmp( ComandoTeste , PROC_VALOR_CMD ) == 0 )
+         {
+			numLidos = LER_LerParametros( "isi" , &inxLista , StringDado , &ValEsp ) ;
+
+            if ( ( numLidos != 3 )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+			pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
+			
+			strcpy( pDado, StringDado);
+
+            return TST_CompararInt( ValEsp , LIS_ProcurarValor( vtListas[inxLista], pDado) , "Condição de retorno errado." );
+						 
+         } /* fim ativa: Testar procurar valor do elemento corrente */ 
+		 
+		 		 
       /* Testar ir para o elemento inicial */
 
          else if ( strcmp( ComandoTeste , IR_INICIO_CMD ) == 0 )
