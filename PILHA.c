@@ -36,11 +36,9 @@ PIL_tpCondRet criaPilha(tppPilha * p)
 	
 }
 
-PIL_tpCondRet pilhaPush(tppPilha p, void * valor, int tam){
+PIL_tpCondRet pilhaPush(tppPilha p, void * valor){
 
 	LIS_tpCondRet CondRet;
-
-	valor = malloc(sizeof(tam));
 
 	if(p == NULL){
 		
@@ -101,8 +99,4 @@ PIL_tpCondRet pilhaPop(tppPilha p){
 	
 	return PIL_CondRetOK;
 
-}
-
-void exclui (void * valor){
-	free(valor);
 }
