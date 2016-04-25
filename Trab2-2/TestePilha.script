@@ -1,7 +1,7 @@
 // Script:    TesteLista.script
 // Autor:     
 // Data:      24/04/2016
-// Proposito: Testar o modulo de pilha
+// Proposito: Testar o modulo de pilha de lista generica duplamente encadeada com cabeca
 
 
 ==Inicializar Parametros
@@ -24,29 +24,29 @@
 =declararparm   FaltouMemoria  int  3
 
 
-==Push em Pilha Vazia
+== Push em Pilha Vazia
 =push	inxPilha0	str0		PilhaVazia
 	
-==Criar Pilha
+== Criar Pilha OK
 =criapilha	inxPilha0			OK
 
-==Push em Pilha OK
+== Push em Pilha OK
 =push	inxPilha0	str0		OK
 =push	inxPilha0	str1		OK
 
-==Pop em Pilha OK
+== Pop retornando PilhaVazia deve dar erro e apos utilizar metodo recuperar, Pop deve funcionar retornando OK
 =pop	inxPilha0	PilhaVazia
 =recuperar
 =pop	inxPilha0	OK
 
-==Pop em Pilha Vazia
+== Pop em Pilha Vazia deve retornar PilhaVazia
 =pop	inxPilha0	PilhaVazia
 
-==Destruir Pilha Vazia
+== Destruir Pilha Vazia
 =criapilha		inxPilha1		OK
-=destruirpilha	inxPilha1		PilhaVazia
+=destruirpilha	inxPilha1		OK
 
-==Destruir Pilha OK
+== Destruir Pilha OK
 =criapilha		inxPilha3	OK
 =push			inxPilha3	str3		OK
 =push			inxPilha3	str2		OK
