@@ -340,7 +340,7 @@ MAT_tpCondRet moverNorte(tppMatriz mat){
 
 }
 
-MAT_tpCondRet empilharValor(tppMatriz mat, void * valor, int lin, int col){
+MAT_tpCondRet empilharValor(tppMatriz mat, void * valor,int tam, int lin, int col){
 
 	MAT_tpCondRet CondRetm;
 
@@ -368,7 +368,7 @@ MAT_tpCondRet empilharValor(tppMatriz mat, void * valor, int lin, int col){
 		
 		CondRetp = criaPilha(&p);
 
-		pilhaPush(p, (void *)valor);
+		pilhaPush(p, (void *)valor, tam);
 
 		mat->noCorr->pilha = p;
 
@@ -378,7 +378,7 @@ MAT_tpCondRet empilharValor(tppMatriz mat, void * valor, int lin, int col){
 
 	}else {
 
-		CondRetp = pilhaPush(mat->noCorr->pilha, (void*)valor);
+		CondRetp = pilhaPush(mat->noCorr->pilha, (void*)valor, tam);
 
 	}
 
