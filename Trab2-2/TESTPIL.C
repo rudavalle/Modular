@@ -30,18 +30,17 @@
 
 #include    "Pilha.h"
 
-
-const char RESET_PILHA_CMD[] = "=resetteste";
-const char CRIAR_PILHA_CMD[] = "=criapilha";
-const char DESTRUIR_PILHA_CMD[] = "=destruirpilha";
-const char ESVAZIAR_PILHA_CMD[] = "=esvaziarpilha";
-const char PUSH_ELEM_CMD[] = "=push";
-const char POP_ELEM_CMD[] = "=pop";
+const char RESET_PILHA_CMD[]			= "=resetteste";
+const char CRIAR_PILHA_CMD[]			= "=criapilha";
+const char DESTRUIR_PILHA_CMD[]			= "=destruirpilha";
+const char ESVAZIAR_PILHA_CMD[]			= "=esvaziarpilha";
+const char PUSH_ELEM_CMD[]				= "=push";
+const char POP_ELEM_CMD[]				= "=pop";
 
 #define TRUE  1
 #define FALSE 0
 
-#define DIM_VT_PILHA   10
+#define DIM_VT_PILHA   14
 #define DIM_VALOR     100
 
 tppPilha vtRefPilhas[DIM_VT_PILHA];
@@ -60,7 +59,7 @@ static int ValidarInxPilha(int inxPilha);
 *  $FC Função: TPIL &Testar pilha
 *
 *  $ED Descrição da função
-*     Podem ser criadas até 10 pilhas, identificadas pelos índices 0 a 9
+*     Podem ser criadas até 14 pilhas, identificadas pelos índices 0 a 13
 *
 *     Comandos disponíveis:
 *
@@ -78,14 +77,13 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 {
 
 	TST_tpCondRet CondRet;
+	char   StringDado[DIM_VALOR];
+	char * pDado;	
+	int i;
 
 	int inxPilha = -1,
 		numLidos = -1,
 		CondRetEsp = -1;
-
-	char   StringDado[DIM_VALOR];
-	char * pDado;
-	int i;
 
 	int numElem = -1;
 
@@ -145,7 +143,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetParm;
 		} /* if */
 
-		CondRet = DestruirPilha(vtPilhas[inxPilha]);
+		CondRet = DestruirPilha(vtRefPilhas[inxPilha]);
 
 		return TST_CompararInt(CondRetEsp, CondRet,
 			"Condicao de retorno errada ao tentar destruir a pilha.");
@@ -191,10 +189,10 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	else if (strcmp(ComandoTeste, POP_ELEM_CMD) == 0)
 	{
 
-		numLidos = LER_LerParametros("iii",
-			&inxPilha, &StringDado, &CondRetEsp);
+		numLidos = LER_LerParametros("ii",
+			&inxPilha, &CondRetEsp);
 
-		if ((numLidos != 3)
+		if ((numLidos != 2)
 			|| (!ValidarInxPilha(inxPilha)))
 		{
 			return TST_CondRetParm;
@@ -204,7 +202,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		
 		strcpy(pDado, StringDado);
 
-		CondRet = pilhaPop(vtPilhas[inxPilha], &pDado);
+		CondRet = pilhaPop(vtRefPilhas[inxPilha]);
 
 		if (CondRet != PIL_CondRetOK)
 		{
