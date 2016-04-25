@@ -1,0 +1,131 @@
+				
+			LISTAS
+
+---------------------------------------------
+
+!!!	Objetivo do programa Trab2-1: 
+	
+	Testar o módulo de listas genéricas. 
+	Testar o módulo de listas genéricas. 
+
+---------------------------------------------
+
+!!! Modo de uso do programa
+	
+	Abra a pasta Trab2-1.
+	
+	Clicar no arquivo Lista.bat.
+	
+	O programa será executado gerando um arquivo LogLista.txt onde poderão ser verificados os resultados dos testes feitos pelo arquivo TesteLista.script.
+ 
+	Caso o usuário deseje criar seu próprio script de teste, pode-se optar por 2 formas distintas de fazê-lo executar. Para isso, deve:
+		
+	1 - Alterar o nome do script que o usuário criou para TesteLista.script e então clicar duas vezes no arquivo Lista.bat.
+	2 - Ou, clicar com o lado direito do mouse no arquivo Lista.bat e selecionar a opção Edit (Editar) para alterar o conteúdo do arquivo. 
+	Alterar o trecho onde está o nome do arquivo contendo o script de teste, atualmente TesteLista.script, para o nome do seu script. 
+
+
+---------------------------------------------
+
+!!! Descrição do conteúdo do arquivo Lista.bat
+
+  Trab2-1 /sTesteLista.script >logLista.txt
+
+  <TesteLista.script>  		- nome do arquivo contendo o script de teste.
+							Parâmetro obrigatório, exceto se solicitado auxílio.
+  <logLista.txt>      		- nome do arquivo contendo o script de teste.
+							Parâmetro opcional. Se não fornecido exibe
+							o resultado do teste na tela (stdout)
+
+
+
+
+---------------------------------------------
+		
+		
+		
+		PILHAS
+
+
+
+---------------------------------------------
+
+!!!	Objetivo do programa Trab2-2: 
+	
+	Testar o módulo de pilhas genéricas.
+
+---------------------------------------------
+
+!!! Modo de uso do programa
+
+	Abra a pasta Trab2-2
+	
+	Clicar no arquivo Pilha.bat.
+	
+	O programa será executado gerando um arquivo LogPilha.txt onde poderão ser verificados os resultados dos testes feitos pelo arquivo TestePilha.script.
+ 
+	Caso o usuário deseje criar seu próprio script de teste, pode-se optar por 2 formas distintas de fazê-lo executar. Para isso, deve:
+		
+	1 - Alterar o nome do script que o usuário criou para TestePilha.script e então clicar duas vezes no arquivo Pilha.bat.
+	2 - Ou, clicar com o lado direito do mouse no arquivo Pilha.bat e selecionar a opção Edit (Editar) para alterar o conteúdo do arquivo. 
+	Alterar o trecho onde está o nome do arquivo contendo o script de teste, atualmente TestePilha.script, para o nome do seu script. 
+
+
+---------------------------------------------
+
+!!! Descrição do conteúdo do arquivo Pilha.bat
+
+  Trab2-2 /sTestePilha.script >logPilha.txt
+
+  <TestePilha.script>  		- nome do arquivo contendo o script de teste.
+							Parâmetro obrigatório, exceto se solicitado auxílio.
+  <logPilha.txt>      		- nome do arquivo contendo o script de teste.
+							Parâmetro opcional. Se não fornecido exibe
+							o resultado do teste na tela (stdout)
+
+
+
+
+---------------------------------------------
+		
+		
+		
+		MATRIZ
+
+
+
+---------------------------------------------
+
+!!!	Objetivo do programa Trab2-3: 
+	
+	Testar o módulo matriz de pilhas. 
+
+---------------------------------------------
+
+!!! Modo de uso do programa
+
+	Abra a pasta Trab2-3
+	
+	Clicar no arquivo Matriz.bat.
+	
+	O programa será executado gerando um arquivo LogMatriz.txt onde poderão ser verificados os resultados dos testes feitos pelo arquivo TesteMatriz.script.
+ 
+	Caso o usuário deseje criar seu próprio script de teste, pode-se optar por 2 formas distintas de fazê-lo executar. Para isso, deve:
+		
+	1 - Alterar o nome do script que o usuário criou para TesteMatriz.script e então clicar duas vezes no arquivo Matriz.bat.
+	2 - Ou, clicar com o lado direito do mouse no arquivo Matriz.bat e selecionar a opção Edit (Editar) para alterar o conteúdo do arquivo. 
+	Alterar o trecho onde está o nome do arquivo contendo o script de teste, atualmente TesteMatriz.script, para o nome do seu script. 
+
+
+---------------------------------------------
+
+!!! Descrição do conteúdo do arquivo Matriz.bat
+
+  Trab2-3 /sTesteMatriz.script >logArvore.txt
+
+  <TesteMatriz.script>  	- nome do arquivo contendo o script de teste.
+							Parâmetro obrigatório, exceto se solicitado auxílio.
+  <logMatriz.txt>      		- nome do arquivo contendo o script de teste.
+							Parâmetro opcional. Se não fornecido exibe
+							o resultado do teste na tela (stdout)
+
