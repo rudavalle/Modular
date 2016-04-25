@@ -13,8 +13,8 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
-*     4       avs   04/abr/2016 criar linguagem script simbólica
-*     3       avs   11/abr/2016 uniformização dos exemplos
+*     4       avs   08/abr/2016 criar linguagem script simbólica
+*     3       avs   13/abr/2016 uniformização dos exemplos
 *     2       avs   18/abr/2016 unificação de todos os módulos em um só projeto
 *     1       avs   24/abr/2016 início desenvolvimento
 *
@@ -30,12 +30,13 @@
 
 #include    "Pilha.h"
 
-const char RESET_PILHA_CMD[]			= "=resetteste";
-const char CRIAR_PILHA_CMD[]			= "=criapilha";
-const char DESTRUIR_PILHA_CMD[]			= "=destruirpilha";
-const char ESVAZIAR_PILHA_CMD[]			= "=esvaziarpilha";
-const char PUSH_ELEM_CMD[]				= "=push";
-const char POP_ELEM_CMD[]				= "=pop";
+
+const char RESET_PILHA_CMD[] 	= "=resetteste";
+const char CRIAR_PILHA_CMD[] 	= "=criapilha";
+const char DESTRUIR_PILHA_CMD[] = "=destruirpilha";
+const char ESVAZIAR_PILHA_CMD[] = "=esvaziarpilha";
+const char PUSH_ELEM_CMD[] 	= "=push";
+const char POP_ELEM_CMD[] 	= "=pop";
 
 #define TRUE  1
 #define FALSE 0
@@ -63,13 +64,12 @@ static int ValidarInxPilha(int inxPilha);
 *
 *     Comandos disponíveis:
 *
-*     =resetteste
-*           - anula o vetor de pilhas. Provoca vazamento de memória
-*     =criarpilha                   inxPilha	CondRetEsp
-*     =destruirpilha                inxPilha	CondRetEsp
-*     =esvaziarpilha                inxPilha	CondRetEsp
-*     =push							inxPilha	string				CondRetEsp
-*     =pop							inxPilha	inxString			CondRetEsp
+*     =resettest		        anula o vetor de pilhas. Provoca vazamento de memória
+*     =criapilha                   	inxPilha	CondRetEsp
+*     =destruirpilha                	inxPilha	CondRetEsp
+*     =esvaziarpilha                	inxPilha	CondRetEsp
+*     =push				inxPilha	string			CondRetEsp
+*     =pop				inxPilha	inxString		CondRetEsp
 *
 ***********************************************************************/
 
@@ -77,13 +77,14 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 {
 
 	TST_tpCondRet CondRet;
-	char   StringDado[DIM_VALOR];
-	char * pDado;	
-	int i;
 
 	int inxPilha = -1,
 		numLidos = -1,
 		CondRetEsp = -1;
+
+	char   StringDado[DIM_VALOR];
+	char * pDado;
+	int i;
 
 	int numElem = -1;
 
@@ -197,17 +198,11 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		{
 			return TST_CondRetParm;
 		} /* if */
-
-		pDado = (char *)malloc(strlen(StringDado) + 1);
 		
-		strcpy(pDado, StringDado);
 
 		CondRet = pilhaPop(vtRefPilhas[inxPilha]);
 
-		if (CondRet != PIL_CondRetOK)
-		{
-			free(pDado);
-		} /* if */
+		
 
 		return TST_CompararInt(CondRetEsp, CondRet,
 			"Condicao de retorno errada ao desempilhar.");
