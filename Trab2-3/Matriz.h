@@ -5,51 +5,51 @@
 #define Matriz_
 /***************************************************************************
 *
-*  $MCD Módulo de definição: MAT  Matriz duplamente encadeada
+*  $MCD MÃ³dulo de definiÃ§Ã£o: MAT  Matriz duplamente encadeada
 *
 *  Arquivo gerado:              Matriz.h
 *  Letras identificadoras:      MAT
 *
-*  Nome da base de software:    Arcabouço para a automação de testes de programas redigidos em C
+*  Nome da base de software:    ArcabouÃ§o para a automaÃ§Ã£o de testes de programas redigidos em C
 *  Arquivo da base de software: D:\AUTOTEST\PROJETOS\Matriz.BSW
 *
-*  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
+*  Projeto: INF 1301 / 1628 AutomatizaÃ§Ã£o dos testes de mÃ³dulos C
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: avs
 *
-*  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*     4       avs   01/fev/2006 criar linguagem script simbólica
-*     3       avs   08/dez/2004 uniformização dos exemplos
-*     2       avs   07/jul/2003 unificação de todos os módulos em um só projeto
-*     1       avs   16/abr/2003 início desenvolvimento
+*  $HA HistÃ³rico de evoluÃ§Ã£o:
+*     VersÃ£o  Autor    Data     ObservaÃ§Ãµes
+*     4       avs   01/fev/2006 criar linguagem script simbÃ³lica
+*     3       avs   08/dez/2004 uniformizaÃ§Ã£o dos exemplos
+*     2       avs   07/jul/2003 unificaÃ§Ã£o de todos os mÃ³dulos em um sÃ³ projeto
+*     1       avs   16/abr/2003 inÃ­cio desenvolvimento
 *
-*  $ED Descrição do módulo
-*     Implementa Matrizs genéricas duplamente encadeadas.
-*     Podem existir n Matrizs em operação simultaneamente.
-*     As Matrizs possuem uma cabeça encapsulando o seu estado.
+*  $ED DescriÃ§Ã£o do mÃ³dulo
+*     Implementa Matrizs genÃ©ricas duplamente encadeadas.
+*     Podem existir n Matrizs em operaÃ§Ã£o simultaneamente.
+*     As Matrizs possuem uma cabeÃ§a encapsulando o seu estado.
 *
-*     Cada Matriz é homogênea quanto ao tipo dos dados que armazena.
-*     Cada elemento da Matriz referencia o valor que contém.
+*     Cada Matriz Ã© homogÃªnea quanto ao tipo dos dados que armazena.
+*     Cada elemento da Matriz referencia o valor que contÃ©m.
 *
-*     Os ponteiros para os dados são copiados para elementos da Matriz.
-*        Não é copiado o valor apontado por estes ponteiros.
+*     Os ponteiros para os dados sÃ£o copiados para elementos da Matriz.
+*        NÃ£o Ã© copiado o valor apontado por estes ponteiros.
 *
-*     O controle da destruição do valor de um elemento a ser excluído
-*        é realizado por uma função fornecida pelo usuário.
+*     O controle da destruiÃ§Ã£o do valor de um elemento a ser excluÃ­do
+*        Ã© realizado por uma funÃ§Ã£o fornecida pelo usuÃ¡rio.
 *
-*     Cada Matriz referencia uma função que determina como devem ser
+*     Cada Matriz referencia uma funÃ§Ã£o que determina como devem ser
 *        desalocados os dados nela contidos.
 *
-*     A função de liberação dos valores contidos nos elementos deve
-*        assegurar a liberação de todos os espaços referênciados pelo
+*     A funÃ§Ã£o de liberaÃ§Ã£o dos valores contidos nos elementos deve
+*        assegurar a liberaÃ§Ã£o de todos os espaÃ§os referÃªnciados pelo
 *        valor contido em um elemento.
-*        Esta função é chamada antes de se desalocar um elemento
+*        Esta funÃ§Ã£o Ã© chamada antes de se desalocar um elemento
 *        de uma Matriz.
-*        Caso não seja necessário desalocar o valor referenciado pelo
-*        elemento, o ponteiro para a função de liberação poderá ser NULL .
-*        Caso o elemento da Matriz seja a única âncora do valor referenciado,
-*        esta função deve promover a destruição (free) desse valor e
+*        Caso nÃ£o seja necessÃ¡rio desalocar o valor referenciado pelo
+*        elemento, o ponteiro para a funÃ§Ã£o de liberaÃ§Ã£o poderÃ¡ ser NULL .
+*        Caso o elemento da Matriz seja a Ãºnica Ã¢ncora do valor referenciado,
+*        esta funÃ§Ã£o deve promover a destruiÃ§Ã£o (free) desse valor e
 *        de todos os dados nele ancorados.
 *
 ***************************************************************************/
@@ -60,20 +60,20 @@
    #define Matriz_EXT extern
 #endif
 
-/***** Declarações exportadas pelo módulo *****/
+/***** DeclaraÃ§Ãµes exportadas pelo mÃ³dulo *****/
 
-/* Tipo referência para uma Matriz */
+/* Tipo referÃªncia para uma Matriz */
 
 typedef struct tgMatriz * tppMatriz ;
 
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: MAT Condições de retorno
+*  $TC Tipo de dados: MAT CondiÃ§Ãµes de retorno
 *
 *
-*  $ED Descrição do tipo
-*     Condições de retorno das funções da Matriz
+*  $ED DescriÃ§Ã£o do tipo
+*     CondiÃ§Ãµes de retorno das funÃ§Ãµes da Matriz
 *
 ***********************************************************************/
 
@@ -83,16 +83,16 @@ typedef struct tgMatriz * tppMatriz ;
                /* Concluiu corretamente */
 
          MAT_CondRetMatrizVazia = 1,
-               /* A Matriz não contém elementos */
+               /* A Matriz nÃ£o contÃ©m elementos */
 
          MAT_CondRetFimMatriz = 2,
                /* Foi atingido o fim de Matriz */
 
          MAT_CondRetNaoAchou = 3,
-               /* Não encontrou o valor procurado */
+               /* NÃ£o encontrou o valor procurado */
 
          MAT_CondRetFaltouMemoria = 4,
-               /* Faltou memória ao tentar criar um elemento de Matriz */
+               /* Faltou memÃ³ria ao tentar criar um elemento de Matriz */
 
 		 MAT_CondRetMatrizNaoExiste = 5,
 			  // Faltou criar a matriz
@@ -101,7 +101,7 @@ typedef struct tgMatriz * tppMatriz ;
 			  // O no nao existe
 
 		 MAT_CondRetPilhaVazia = 7,
-               /* A PILHA não contém elementos */
+               /* A PILHA nÃ£o contÃ©m elementos */
 
          MAT_CondRetFimPilha = 8
 
@@ -110,39 +110,39 @@ typedef struct tgMatriz * tppMatriz ;
 
 /***********************************************************************
 *
-*  $FC Função: MAT  &Criar Matriz
+*  $FC FunÃ§Ã£o: MAT  &Criar Matriz
 *
-*  $ED Descrição da função
-*     Cria uma Matriz genérica duplamente encadeada.
-*     Os possíveis tipos são desconhecidos a priori.
-*     A tipagem é implicita.
-*     Não existe identificador de tipo associado à Matriz.
+*  $ED DescriÃ§Ã£o da funÃ§Ã£o
+*     Cria uma Matriz genÃ©rica duplamente encadeada.
+*     Os possÃ­veis tipos sÃ£o desconhecidos a priori.
+*     A tipagem Ã© implicita.
+*     NÃ£o existe identificador de tipo associado Ã  Matriz.
 *
-*  $EP Parâmetros
-*     ExcluirValor  - ponteiro para a função que processa a
-*                     exclusão do valor referenciado pelo elemento
-*                     a ser excluído.
-*                     Ver descrição do módulo.
+*  $EP ParÃ¢metros
+*     ExcluirValor  - ponteiro para a funÃ§Ã£o que processa a
+*                     exclusÃ£o do valor referenciado pelo elemento
+*                     a ser excluÃ­do.
+*                     Ver descriÃ§Ã£o do mÃ³dulo.
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna o ponteiro para a Matriz.
-*     Este ponteiro será utilizado pelas funções que manipulem esta Matriz.
+*     Este ponteiro serÃ¡ utilizado pelas funÃ§Ãµes que manipulem esta Matriz.
 *
-*     Se ocorreu algum erro, por exemplo falta de memória ou dados errados,
-*     a função retornará NULL.
-*     Não será dada mais informação quanto ao problema ocorrido.
+*     Se ocorreu algum erro, por exemplo falta de memÃ³ria ou dados errados,
+*     a funÃ§Ã£o retornarÃ¡ NULL.
+*     NÃ£o serÃ¡ dada mais informaÃ§Ã£o quanto ao problema ocorrido.
 *
 ***********************************************************************/
 
    MAT_tpCondRet criaMatriz(tppMatriz * p);
 
-   MAT_tpCondRet empilhaValor(tppMatriz mat, void * valor, int col, int lin);
+   MAT_tpCondRet empilhaValor(tppMatriz mat, void * valor, int lin, int col);
 
    MAT_tpCondRet inserirLinha(tppMatriz mat);
 
    MAT_tpCondRet inserirColuna(tppMatriz mat);
 
-   MAT_tpCondRet criarTabuleiro(tppMatriz mat, int numColuna, int numLinha);
+   MAT_tpCondRet criarTabuleiro(tppMatriz mat, int numLinha, int numColuna);
 
    MAT_tpCondRet moverSul(tppMatriz mat);
 
@@ -150,7 +150,7 @@ typedef struct tgMatriz * tppMatriz ;
 
 #undef Matriz_EXT
 
-/********** Fim do módulo de definição: MAT  Matriz duplamente encadeada **********/
+/********** Fim do mÃ³dulo de definiÃ§Ã£o: MAT  Matriz duplamente encadeada **********/
 
 #else
 #endif
