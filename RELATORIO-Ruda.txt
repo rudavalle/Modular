@@ -1,27 +1,32 @@
-Data		  Horas Trabalhadas		  Tipo Tarefa 		 Descrição da Tarefa Realizada
+Data		  Horas Trabalhadas		  Tipo Tarefa 		 	Descrição da Tarefa Realizada
 
-15/04/2016		1 Hora			Estudo da Tarefa	Primeiro contato com o jogo
-									Mahjong e suas regras
-
-
-
-20/04/2016		2 Horas			Redigir e Revisar	Escrita dos scripts de Lista e de Pilha
-						scripts de Teste	e revisão dos mesmos
+15/04/2016		1 Hora			Estudo da Tarefa		Primeiro contato com o jogo
+										Mahjong e suas regras
 
 
 
-22/04/2016		1 Hora			Revisão e Teste de 	Revisão dos scripts de teste
-			40 Min			Scripts	e correção	teste das funções pilha e lista
+20/04/2016		2 Horas			Redigir e Revisar		Escrita dos scripts de Lista e de Pilha
+						scripts de Teste		e revisão dos mesmos
+
+
+
+22/04/2016		1 Hora			Revisão e Teste de 		Revisão dos scripts de teste
+			40 Min			Scripts	e correção		teste das funções pilha e lista
 						de funções
 
 
 
-23/04/2016		1 Hora			Escrita do script	Incio da escrita dos scripts
-						de teste de matrizes	de teste de matrizes
+23/04/2016		1 Hora			Escrita do script		Incio da escrita dos scripts
+						de teste de matrizes		de teste de matrizes
 
 
 
 
-24/04/2016		4 Horas			Escrita de script de	Retomada da escrita dos scripts
-						matrizes, revisão de	e revisão e alteração das funções
-						funções			matriz.c e pilha.c
+24/04/2016		4 Horas			Escrita de script de		Retomada da escrita dos scripts
+						matrizes, revisão de		e revisão e alteração das funções
+						funções				matriz.c e pilha.c
+
+25/04/2016		4 Horas			Finalizção do trabalho		Finalização do trabalho corrigindo scripts
+										e verificando retornos não necessários
+										checagem do encapsulamento das funções
+									
